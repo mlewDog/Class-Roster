@@ -1,27 +1,29 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include <string>
-
+#include "degree.h"
 
 using namespace std;
 
 class Student
 {
 public:
-    int getStudentID();
+    string getStudentId() const;
     string getFirstName() const;
     string getLastName() const;
     string getEmailAddress() const;
     int getAge() const;
-    int getDaysToCompleteCourse() const;
-    string getDegreeProgram() const;
+    int getDaysToCompleteCourse(int i) const;
+    string getDegreeProgram();
 
+    void setStudentId(string studentId);
     void setFirstName(string firstName);
-    void setLastName();
-    void setEmailAddress();
-    void setAge();
-    void setDaysToCompleteCourse();
-    void setDegreePorgram();
+    void setLastName(string lastName);
+    void setEmailAddress(string emailAddress);
+    void setAge(int age);
+    void setDaysToCompleteCourse(int daysIncourse1, int daysIncourse2, int daysIncourse3);
+    void setDegreePorgram(string degreeProgram);
+    void print();
 
     string studentId;
     string firstName;
@@ -29,15 +31,18 @@ public:
     string emailAddress;
     int age;
     int daysToCompleteCourse[3];
-    string degreeProgram;
+    Degree::degreeProgram degreeProgram;
+    
 
-    Student(string studentId, string firstName, string lastName, string emailAddress)
+    Student(string studentId, string firstName, string lastName, string emailAddress, int age, int daysIncourse1, int daysIncourse2, int daysIncourse3, string degreeProgram)
     {
-       this->studentId = studentId; 
-       this->firstName = firstName;
-       this->lastName = lastName;
-       this->emailAddress = emailAddress;
-        
+        setStudentId(studentId);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmailAddress(emailAddress);
+        setAge(age);
+        setDaysToCompleteCourse(daysIncourse1, daysIncourse2, daysIncourse3);
+        setDegreePorgram(degreeProgram);
     }
 };
 

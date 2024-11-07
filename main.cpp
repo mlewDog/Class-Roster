@@ -3,8 +3,9 @@
 #include <string>
 #include "student.h"
 #include "roster.h"
+#include "degree.h"
 
-void parseStudentData(std::string studentInfo, int i)
+void parseStudentData(std::string studentInfo, int i, Roster& classRoster)
 {
 
    string parsedVariables[9];
@@ -22,11 +23,15 @@ void parseStudentData(std::string studentInfo, int i)
    std::string firstName = parsedVariables[1];
    std::string lastName = parsedVariables[2];
    std::string studentEmail = parsedVariables[3];
-   std::string age = parsedVariables[4];
+   int age = stoi(parsedVariables[4]);
    int courseDays1 = stoi(parsedVariables[5]);
    int courseDays2 = stoi(parsedVariables[6]);
    int courseDays3 = stoi(parsedVariables[7]);
-   std::string className = parsedVariables[8];
+   string className = parsedVariables[8];
+    
+   cout << "Course 1 Pasre: " << courseDays1 << " Course 2 Pasre: " << courseDays2 <<  " Course 3 Pasre: " << courseDays3 << endl;
+    
+    classRoster.add(studentId, firstName, lastName, studentEmail, age, courseDays1,  courseDays2,  courseDays3, className);
 }
 
 int main()
@@ -43,30 +48,24 @@ int main()
    for (int i = 0; i < numberOfStudents; i++)
    {
       std::string studentInfo = studentData[i];
-
-      std::string parsedVariables[9];
-
-      int numberOfVariables = sizeof(parsedVariables) / sizeof(parsedVariables[0]);
-
-      istringstream inSS(studentInfo);
-
-      for (int i = 0; i < numberOfVariables; i++)
-      {
-         getline(inSS, parsedVariables[i], ',');
-      }
-
-      std::string studentId = parsedVariables[0];
-      std::string firstName = parsedVariables[1];
-      std::string lastName = parsedVariables[2];
-      std::string studentEmail = parsedVariables[3];
-      std::string age = parsedVariables[4];
-      int courseDays1 = stoi(parsedVariables[5]);
-      int courseDays2 = stoi(parsedVariables[6]);
-      int courseDays3 = stoi(parsedVariables[7]);
-      std::string className = parsedVariables[8];
-
-     classRoster.add(studentId, firstName, lastName, studentEmail);
+       parseStudentData(studentInfo, i, classRoster);
    }
+    
+//    classRoster.printAll();
+    
+//    classRoster.printAverageDaysInCourse("A1");
+    
+//    int classSize = sizeof(classRoster.classRosterArray) / sizeof(classRoster.classRosterArray[0]);
+//    
+//    for (int i = 0; i < classSize; i++) {
+//        string studentId = classRoster.classRosterArray[i]-> getStudentId();
+//        classRoster.printAverageDaysInCourse(studentId);
+//    }
+    
+    
+    
+    
+    
 
    return 0;
 }

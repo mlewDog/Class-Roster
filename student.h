@@ -3,38 +3,35 @@
 #include <string>
 #include "degree.h"
 
-using namespace std;
-
 class Student
 {
 public:
-    string getStudentId() const;
-    string getFirstName() const;
-    string getLastName() const;
-    string getEmailAddress() const;
+    std::string getStudentId() const;
+    std::string getFirstName() const;
+    std::string getLastName() const;
+    std::string getEmailAddress() const;
     int getAge() const;
     int getDaysToCompleteCourse(int i) const;
-    string getDegreeProgram();
+    std::string getDegreeProgram();
 
-    void setStudentId(string studentId);
-    void setFirstName(string firstName);
-    void setLastName(string lastName);
-    void setEmailAddress(string emailAddress);
+    void setStudentId(std::string studentId);
+    void setFirstName(std::string firstName);
+    void setLastName(std::string lastName);
+    void setEmailAddress(std::string emailAddress);
     void setAge(int age);
     void setDaysToCompleteCourse(int daysIncourse1, int daysIncourse2, int daysIncourse3);
-    void setDegreePorgram(string degreeProgram);
+    void setDegreePorgram(std::string degreeProgram);
     void print();
 
-    string studentId;
-    string firstName;
-    string lastName;
-    string emailAddress;
+    std::string studentId;
+    std::string firstName;
+    std::string lastName;
+    std::string emailAddress;
     int age;
     int daysToCompleteCourse[3];
     Degree::degreeProgram degreeProgram;
     
-
-    Student(string studentId, string firstName, string lastName, string emailAddress, int age, int daysIncourse1, int daysIncourse2, int daysIncourse3, string degreeProgram)
+    Student(std::string studentId, std::string firstName, std::string lastName, std::string emailAddress, int age, int daysIncourse1, int daysIncourse2, int daysIncourse3, std::string degreeProgram)
     {
         setStudentId(studentId);
         setFirstName(firstName);

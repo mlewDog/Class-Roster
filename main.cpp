@@ -8,11 +8,11 @@
 void parseStudentData(std::string studentInfo, int i, Roster& classRoster)
 {
 
-   string parsedVariables[9];
+   std::string parsedVariables[9];
 
    int numberOfVariables = sizeof(parsedVariables) / sizeof(parsedVariables[0]);
 
-   istringstream inSS(studentInfo);
+   std::istringstream inSS(studentInfo);
 
    for (int i = 0; i < numberOfVariables; i++)
    {
@@ -27,9 +27,7 @@ void parseStudentData(std::string studentInfo, int i, Roster& classRoster)
    int courseDays1 = stoi(parsedVariables[5]);
    int courseDays2 = stoi(parsedVariables[6]);
    int courseDays3 = stoi(parsedVariables[7]);
-   string className = parsedVariables[8];
-    
-   cout << "Course 1 Pasre: " << courseDays1 << " Course 2 Pasre: " << courseDays2 <<  " Course 3 Pasre: " << courseDays3 << endl;
+   std::string className = parsedVariables[8];
     
     classRoster.add(studentId, firstName, lastName, studentEmail, age, courseDays1,  courseDays2,  courseDays3, className);
 }
@@ -37,7 +35,7 @@ void parseStudentData(std::string studentInfo, int i, Roster& classRoster)
 int main()
 {
 
-   cout << "Scripting and Programming - Applications - C867, C++, Student Id: 012234098, Matthew Lewis" << endl;
+   std::cout << "Scripting and Programming - Applications - C867, C++, Student Id: 012234098, Matthew Lewis" << std::endl;
 
    Roster classRoster;
 
@@ -51,21 +49,26 @@ int main()
        parseStudentData(studentInfo, i, classRoster);
    }
     
-//    classRoster.printAll();
+    classRoster.printAll();
+    classRoster.printInvalidEmails();
     
-//    classRoster.printAverageDaysInCourse("A1");
+    int classSize = sizeof(classRoster.classRosterArray) / sizeof(classRoster.classRosterArray[0]);
     
-//    int classSize = sizeof(classRoster.classRosterArray) / sizeof(classRoster.classRosterArray[0]);
-//    
-//    for (int i = 0; i < classSize; i++) {
-//        string studentId = classRoster.classRosterArray[i]-> getStudentId();
-//        classRoster.printAverageDaysInCourse(studentId);
-//    }
+    std::cout << "List of avergage days in course: " << std::endl;
+    for (int i = 0; i < classSize; i++) {
+        std::string studentId = classRoster.classRosterArray[i]-> getStudentId();
+        classRoster.printAverageDaysInCourse(studentId);
+    }
+    
+    classRoster.printDegreeProgram(Degree::SOFTWARE);
+    
+    classRoster.remove("A3");
+    
+    classRoster.printAll();
+    
+    classRoster.remove("A3");
     
     
     
-    
-    
-
    return 0;
 }

@@ -2,21 +2,19 @@
 #include "roster.h"
 #include <iostream>
 
-using namespace std;
-
-string Student::getStudentId() const {
+std::string Student::getStudentId() const {
     return studentId;
 }
 
-string Student::getFirstName() const {
+std::string Student::getFirstName() const {
     return firstName;
 }
 
-string Student::getLastName() const {
+std::string Student::getLastName() const {
     return lastName;
 }
 
-string Student::getDegreeProgram() {
+std::string Student::getDegreeProgram() {
     if (degreeProgram == Degree::SECURITY) {
         return "Security";
     } else if (degreeProgram == Degree::NETWORK) {
@@ -34,27 +32,29 @@ int Student::getAge() const {
 
 int Student::getDaysToCompleteCourse(int i) const {
     
+    
+    
     return daysToCompleteCourse[i];
 }
 
-string Student::getEmailAddress() const {
+std::string Student::getEmailAddress() const {
     return emailAddress;
 }
 
-void Student::setStudentId(string studentId) {
+void Student::setStudentId(std::string studentId) {
     this->studentId = studentId;
 }
 
-void Student::setFirstName(string firstName) {
+void Student::setFirstName(std::string firstName) {
     this->firstName = firstName;
 }
 
-void Student::setLastName(string lastName) {
+void Student::setLastName(std::string lastName) {
     this->lastName = lastName;
 
 }
 
-void Student::setEmailAddress(string emailAddress) {
+void Student::setEmailAddress(std::string emailAddress) {
     this->emailAddress = emailAddress;
 }
 
@@ -63,14 +63,13 @@ void Student::setAge(int age) {
 }
 
 void Student::setDaysToCompleteCourse(int daysIncourse1, int daysIncourse2, int daysIncourse3) {
-    cout << daysIncourse1 << " " << daysIncourse2 << " " << daysIncourse3 << " " << endl;
     this->daysToCompleteCourse[0] = { daysIncourse1};
     this->daysToCompleteCourse[1] = { daysIncourse2};
     this->daysToCompleteCourse[2] = { daysIncourse3};
 }
 
 
-void Student::setDegreePorgram(string degreeProgram) {
+void Student::setDegreePorgram(std::string degreeProgram) {
     if (degreeProgram == "SECURITY") {
         this->degreeProgram = Degree::SECURITY;
     } else if (degreeProgram == "NETWORK") {
@@ -81,13 +80,21 @@ void Student::setDegreePorgram(string degreeProgram) {
     }
 
 void Student::print()  {
-    cout << "Student ID: " << getStudentId() << " ";
-    cout << "First Name: " << getFirstName() << " ";
-    cout << "Last Name: " << getLastName() << " ";
-    cout << "Age: " << getAge() << " ";
-    cout << getDaysToCompleteCourse(1);
-    cout << " } ";
-    cout << "Degree Program: " << getDegreeProgram();
-    cout << endl;
+    std::cout << "Student ID: " << getStudentId() << " ";
+    std::cout << "First Name: " << getFirstName() << " ";
+    std::cout << "Last Name: " << getLastName() << " ";
+    std::cout << "Age: " << getAge() << " ";
+    
+    std::cout << "daysInCourse: {";
+    for(int i = 0; i < 3; i++) {
+        std::cout << getDaysToCompleteCourse(i);
+        
+        if(i < 2) {
+            std::cout << ", ";
+        }
+    }
+    
+    std::cout << "} ";
+    std::cout << "Degree Program: " << getDegreeProgram();
+    std::cout << std::endl;
 }
-
